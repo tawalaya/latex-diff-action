@@ -123,7 +123,7 @@ if [[ -n "$compile_diff" ]]; then
   git-latexdiff --main $root_file  --no-view -o diff.pdf --cleanup all --ignore-makefile HEAD^1 --
 fi
 
-if [[ -n "$with_stats" ]]; the
+if [[ -n "$with_stats" ]]; then
   info "creating statistics"
   latexpand $root_file | texcount - > stats.txt
 fi
