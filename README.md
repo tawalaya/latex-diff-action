@@ -8,18 +8,29 @@ It is based on  [a docker image](https://github.com/xu-cheng/latex-docker) with 
 
 If you want to run arbitrary commands in a TeXLive environment, use [texlive-action](https://github.com/xu-cheng/texlive-action) instead.
 
+## Important
+
+If your using `compile_diff` you must use a check out at least two commits. Thus, if your using `actions/checkout@v2` set `fetch-depth` to 2 or more.
+
+<!-- Duh, took me a whie to figure that out form the not so helpfull error messages ... -->
+For example:
+```yaml
+- name: Set up Git repository
+    uses: actions/checkout@v2
+    with:
+      fetch-depth: 2
+- uses: tawalaya/latex-diff-action@v1
+  with:
+    root_file: |
+      file1.tex
+      file2.tex
+```
+
 ## Inputs
 
 * `root_file`
 
-    The root LaTeX file to be compiled. This input is required. You can also pass multiple files as a multi-line string to compile multiple documents. For example:
-    ```yaml
-    - uses: tawalaya/latex-diff-action@v1
-      with:
-        root_file: |
-          file1.tex
-          file2.tex
-    ```
+    The root LaTeX file to be compiled. This input is required. You can also pass multiple files as a multi-line string to compile multiple documents. 
 
 * `working_directory`
 
