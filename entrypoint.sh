@@ -120,29 +120,7 @@ done <<< "$root_file"
 
 if [[ -n "$compile_diff" ]]; then
   info "latex diff" 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   git-latexdiff --verbose --main "$root_file"  --no-view -o diff.pdf --cleanup all --ignore-makefile $(git rev-parse HEAD^) --
-=======
-  git-latexdiff --main "$root_file"  --no-view -o diff.pdf --cleanup all --ignore-makefile 'HEAD^1' --
->>>>>>> 653df1f... fiexed broken diff cmd?
-=======
-  git-latexdiff --main "$root_file"  --no-view -o diff.pdf --cleanup all --ignore-makefile 'HEAD^1' 'HEAD'
->>>>>>> 54a671b... fix now?
-=======
-  git status
-<<<<<<< HEAD
-  git-latexdiff --verbose --main "$root_file"  --no-view -o diff.pdf --cleanup all --ignore-makefile 'HEAD^1' 'HEAD'
->>>>>>> 698d8dd... debugging...
-=======
-=======
-  git --version
-  git rev-parse HEAD^
->>>>>>> 2861df9... debugging III
-  git-latexdiff --verbose --main "$root_file"  --no-view -o diff.pdf --cleanup all --ignore-makefile $(git rev-parse HEAD^) --
->>>>>>> 9e937de... debugging II, better local testing for this would be nice
 fi
 
 if [[ -n "$with_stats" ]]; then
