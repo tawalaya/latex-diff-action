@@ -120,10 +120,10 @@ done <<< "$root_file"
 
 if [[ -n "$compile_diff" ]]; then
   info "latex diff" 
-  git-latexdiff --main $root_file  --no-view -o diff.pdf --cleanup all --ignore-makefile HEAD~ --
+  git-latexdiff --main $root_file  --no-view -o diff.pdf --cleanup all --ignore-makefile HEAD^1 --
 fi
 
-if [[ -n "$with_stats" ]]; then
+if [[ -n "$with_stats" ]]; the
   info "creating statistics"
   latexpand $root_file | texcount - > stats.txt
 fi
