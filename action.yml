@@ -1,0 +1,54 @@
+name: Github Action for LaTeX with Diff and Stats
+description: GitHub Action to compile LaTeX documents including LatexDiffs and Stats
+author: Cheng XU, Sebastian Werner
+inputs:
+  root_file:
+    description: The root LaTeX file to be compiled
+    required: true
+  working_directory:
+    description: The working directory for the LaTeX engine
+  compiler:
+    description: The LaTeX engine to be invoked
+    default: latexmk
+  args:
+    description: Extra arguments to be passed to the LaTeX engine
+    default: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode"
+  extra_packages:
+    description: "[Deprecated] Install extra packages by tlmgr"
+  extra_system_packages:
+    description: Install extra packages by apk
+  pre_compile:
+    description: Arbitrary bash codes to be executed before compiling LaTeX documents
+  post_compile:
+    description: Arbitrary bash codes to be executed after compiling LaTeX documents
+  latexmk_shell_escape:
+    description: Instruct latexmk to enable --shell-escape
+  latexmk_use_lualatex:
+    description: Instruct latexmk to use LuaLaTeX
+  latexmk_use_xelatex:
+    description: Instruct latexmk to use XeLaTeX
+  compile_diff:
+    description: use git-latexdiff to generate a diff.pdf 
+  with_stats:
+    description: generate latex stats (wordcount/headings...)
+
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.root_file }}
+    - ${{ inputs.working_directory }}
+    - ${{ inputs.compiler }}
+    - ${{ inputs.args }}
+    - ${{ inputs.extra_packages }}
+    - ${{ inputs.extra_system_packages }}
+    - ${{ inputs.pre_compile }}
+    - ${{ inputs.post_compile }}
+    - ${{ inputs.latexmk_shell_escape }}
+    - ${{ inputs.latexmk_use_lualatex }}
+    - ${{ inputs.latexmk_use_xelatex }}
+    - ${{ inputs.compile_diff }}
+    - ${{ inputs.with_stats }}
+branding:
+  icon: book
+  color: blue
