@@ -2,7 +2,7 @@
 
 [![GitHub Actions Status](https://github.com/tawalaya/latex-diff-action/workflows/Test%20Github%20Action/badge.svg)](https://github.com/tawalaya/latex-diff-action/actions)
 
-GitHub Action to compile LaTeX documents, based on [https://github.com/xu-cheng/latex-action/actions](https://github.com/xu-cheng/latex-action/actions). Extend with [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff) and latex statistics.
+GitHub Action to compile LaTeX documents, based on [https://github.com/xu-cheng/latex-action/actions](https://github.com/xu-cheng/latex-action/actions). Extended with [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff) and latex statistics.
 
 It is based on  [a docker image](https://github.com/xu-cheng/latex-docker) with a full [TeXLive](https://www.tug.org/texlive/) environment installed, for more see [Dockerfile](./Dockerfile).
 
@@ -10,7 +10,7 @@ If you want to run arbitrary commands in a TeXLive environment, use [texlive-act
 
 ## Important
 
-If your using `compile_diff` you must use a check out at least two commits. Thus, if your using `actions/checkout@v2` set `fetch-depth` to 2 or more.
+If you're using `compile_diff` you must use a check out at least two commits. Thus, if your using `actions/checkout@v2` set `fetch-depth` to 2 or more.
 
 <!-- Duh, took me a whie to figure that out form the not so helpfull error messages ... -->
 For example:
@@ -94,12 +94,12 @@ jobs:
           root_file: main.tex
 ```
 
-For furhter examples look at the [original](https://github.com/xu-cheng/latex-action).
+For further examples look at the [original](https://github.com/xu-cheng/latex-action).
 
-## Gerenrated Files
+## Generated Files
  - diff.pdf : contains the `latexdiff` results
  - stats.txt : contains the `texcount` stats
- - `root_file`.pdf : containts the compiled tex file
+ - `root_file`.pdf : contains the compiled tex file
 
 ## License
 
