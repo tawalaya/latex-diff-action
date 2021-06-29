@@ -119,8 +119,14 @@ while IFS= read -r f; do
 done <<< "$root_file"
 
 if [[ -n "$compile_diff" ]]; then
-  info "latex diff" 
-  git-latexdiff --verbose --main "$root_file"  --no-view -o diff.pdf --cleanup all --ignore-makefile $(git rev-parse HEAD^) --
+    latexdiff_compiler_arg=""
+  if [[ -n "$latexmk_use_xelatex" ]]; then
+      latexdiff_compiler_arg="--xelatex"
+  elif [[ -n "$latexmk_use_lualatex" ]]; then
+      latexdiff_compiler_arg="--lualatex"
+  fi
+  info "latex diff"
+  git-latexdiff --verbose --main "$root_file" $latexdiff_compiler_arg --no-view -o diff.pdf --cleanup all --ignore-makefile $(git rev-parse HEAD^) --
 fi
 
 if [[ -n "$with_stats" ]]; then
