@@ -28,7 +28,10 @@ inputs:
   latexmk_use_xelatex:
     description: Instruct latexmk to use XeLaTeX
   compile_diff:
-    description: use git-latexdiff to generate a diff.pdf 
+    description: use git-latexdiff to generate a diff.pdf
+  compile_diff_target:
+    description: target object to compare with
+    default: HEAD^
   with_stats:
     description: generate latex stats (wordcount/headings...)
 
@@ -48,6 +51,7 @@ runs:
     - ${{ inputs.latexmk_use_lualatex }}
     - ${{ inputs.latexmk_use_xelatex }}
     - ${{ inputs.compile_diff }}
+    - ${{ inputs.compile_diff_target }}
     - ${{ inputs.with_stats }}
 branding:
   icon: book

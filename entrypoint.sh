@@ -27,7 +27,8 @@ latexmk_shell_escape="${9}"
 latexmk_use_lualatex="${10}"
 latexmk_use_xelatex="${11}"
 compile_diff="${12}"
-with_stats="${13}"
+compile_diff_target="${13}"
+with_stats="${14}"
 
 if [[ -z "$root_file" ]]; then
   error "Input 'root_file' is missing."
@@ -120,7 +121,7 @@ done <<< "$root_file"
 
 if [[ -n "$compile_diff" ]]; then
   info "latex diff" 
-  git-latexdiff --verbose --main "$root_file"  --no-view -o diff.pdf --cleanup all --ignore-makefile $(git rev-parse HEAD^) --
+  git-latexdiff --verbose --main "$root_file"  --no-view -o diff.pdf --cleanup all --ignore-makefile $(git rev-parse $compile_diff_target) --
 fi
 
 if [[ -n "$with_stats" ]]; then
